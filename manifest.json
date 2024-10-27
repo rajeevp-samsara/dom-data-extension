@@ -1,14 +1,17 @@
 {
     "manifest_version": 3,
-    "name": "DOM Content Capture",
+    "name": "DOM Content Capture and ChatGPT",
     "version": "1.0",
-    "description": "Capture and display DOM content in a popup.",
+    "description": "Capture DOM content, send it to ChatGPT, and display the response.",
     "permissions": [
       "activeTab",
       "scripting"
     ],
     "action": {
       "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "background.js"
     },
     "content_scripts": [
       {
