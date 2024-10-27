@@ -1,5 +1,3 @@
-// This script captures DOM content from the active tab and displays it in the popup.
-
 document.addEventListener('DOMContentLoaded', function () {
     // Get the active tab
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -12,7 +10,23 @@ document.addEventListener('DOMContentLoaded', function () {
         (results) => {
           if (results && results[0] && results[0].result) {
             const content = results[0].result;
-            document.getElementById('content').textContent = content;
+  
+            // Send captured content to background.js to process it with ChatGPT
+            chrome.runtime.sendMessage(
+              {
+                action: 'sendToChatGPT',
+                content: content,  // Captured content from the DOM
+                prompt: `1. Generate Summary\n2. Create the most useful chart\n3. Provide insights based on this data:\n${content}`
+              },
+              (response) => {
+                if (response && response.success) {
+                  // Display the response from ChatGPT in the popup
+                  document.getElementById('content').textContent = response.chatGPTResponse;
+                } else {
+                  document.getElementById('content').textContent = "Failed to get response from ChatGPT.";
+                }
+              }
+            );
           } else {
             document.getElementById('content').textContent = "Failed to capture content.";
           }
@@ -21,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   
-  // This function will be injected into the active tab to capture the DOM content.
   function captureDOMContent() {
     return document.body.innerText;  // You can modify this to capture different parts of the DOM if needed.
   }
