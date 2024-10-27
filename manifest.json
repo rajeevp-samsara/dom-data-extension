@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "DOM Content Capture",
+    "version": "1.0",
+    "description": "Capture and display DOM content in a popup.",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
