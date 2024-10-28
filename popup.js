@@ -3,14 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const insightsBtn = document.getElementById('insights-btn');
 
   
-          // Attach click handlers to the buttons
-          summaryBtn.addEventListener('click', () => {
-            captureDOMAndSendToChatGPT('Generate a summary based on this data:\n${content}.');
-          });
-        
-          insightsBtn.addEventListener('click', () => {
-            captureDOMAndSendToChatGPT('Generate the top 3 insights based on this data:\n${content}');
-          });
+      
 
     // Function to capture DOM content and send the appropriate prompt to ChatGPT
     function captureDOMAndSendToChatGPT(prompt) {
@@ -52,7 +45,14 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         );
       });
-
+    // Attach click handlers to the buttons
+    summaryBtn.addEventListener('click', () => {
+      captureDOMAndSendToChatGPT('Generate a summary based on this data:\n${content}.');
+    });
+  
+    insightsBtn.addEventListener('click', () => {
+      captureDOMAndSendToChatGPT('Generate the top 3 insights based on this data:\n${content}');
+    });
     }
   
     // Function to capture the DOM content (executed on the active tab)
