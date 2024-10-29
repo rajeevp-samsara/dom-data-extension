@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Attach click handlers to the buttons
   summaryBtn.addEventListener('click', () => {
-    captureDOMAndSendToChatGPT('Generate a summary of the webpage content.');
+    captureDOMAndSendToChatGPT('Generate a concise summary of the webpage content.');
   });
 
   insightsBtn.addEventListener('click', () => {
-    captureDOMAndSendToChatGPT('Generate the top 3 insights from the webpage content.');
+    captureDOMAndSendToChatGPT('Generate the top 3 insights from the webpage content and state them in a concise manner.');
   });
 
   // Function to capture DOM content and send the appropriate prompt to ChatGPT
