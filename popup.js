@@ -58,8 +58,15 @@ document.addEventListener('DOMContentLoaded', function () {
     return document.body.innerText;  // Capture the entire body text of the page
   }
 
-  // Function to display the ChatGPT response as an overlay
+  
+  // Function to display the ChatGPT response as an overlay with improved UI
   function displayResponseOverlay(responseText) {
+    // Check if an overlay already exists, if so, remove it first
+    const existingOverlay = document.getElementById('chatgpt-response-overlay');
+    if (existingOverlay) {
+      existingOverlay.remove();
+    }
+
     // Create the overlay element
     const overlay = document.createElement('div');
     overlay.id = 'chatgpt-response-overlay';
@@ -68,39 +75,88 @@ document.addEventListener('DOMContentLoaded', function () {
     overlay.style.left = '0';
     overlay.style.width = '100%';
     overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     overlay.style.display = 'flex';
     overlay.style.justifyContent = 'center';
     overlay.style.alignItems = 'center';
     overlay.style.zIndex = '10000';
+    overlay.style.transition = 'opacity 0.3s ease-in-out';
+    overlay.style.opacity = '0'; // Start with hidden overlay
+    document.body.appendChild(overlay);
+
+    // Fade-in effect
+    setTimeout(() => {
+      overlay.style.opacity = '1';
+    }, 10);
 
     // Create the content box
     const contentBox = document.createElement('div');
-    contentBox.style.backgroundColor = 'white';
+    contentBox.style.backgroundColor = '#fff';
     contentBox.style.padding = '20px';
-    contentBox.style.borderRadius = '8px';
+    contentBox.style.borderRadius = '12px';
     contentBox.style.maxWidth = '600px';
+    contentBox.style.width = '90%';
     contentBox.style.maxHeight = '80%';
     contentBox.style.overflowY = 'auto';
-    contentBox.style.boxShadow = '0px 4px 6px rgba(0, 0, 0, 0.1)';
+    contentBox.style.boxShadow = '0px 4px 20px rgba(0, 0, 0, 0.2)';
     contentBox.style.fontFamily = 'Arial, sans-serif';
-    contentBox.style.fontSize = '14px';
-    contentBox.innerText = responseText;
+    contentBox.style.fontSize = '16px';
+    contentBox.style.lineHeight = '1.6';
+    contentBox.style.color = '#333';
+    contentBox.style.position = 'relative';
+
+    // Add the ChatGPT response text
+    const contentText = document.createElement('p');
+    contentText.innerText = responseText;
+    contentBox.appendChild(contentText);
+
+    // Add the close button
+    const closeButton = document.createElement('button');
+    closeButton.innerHTML = '&times;';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '10px';
+    closeButton.style.right = '15px';
+    closeButton.style.background = 'none';
+    closeButton.style.border = 'none';
+    closeButton.style.fontSize = '24px';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.color = '#333';
+    closeButton.style.transition = 'color 0.3s ease';
+    closeButton.addEventListener('mouseover', () => {
+      closeButton.style.color = '#d9534f'; // Red hover effect
+    });
+    closeButton.addEventListener('mouseleave', () => {
+      closeButton.style.color = '#333';
+    });
+    closeButton.addEventListener('click', () => {
+      overlay.style.opacity = '0'; // Fade-out effect
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+      }, 300);
+    });
+
+    // Append the close button to the content box
+    contentBox.appendChild(closeButton);
 
     // Append the content box to the overlay
     overlay.appendChild(contentBox);
-    document.body.appendChild(overlay);
 
     // Close the overlay when clicking outside the content box or pressing the 'Esc' key
     overlay.addEventListener('click', (event) => {
       if (event.target === overlay) {
-        document.body.removeChild(overlay);
+        overlay.style.opacity = '0'; // Fade-out effect
+        setTimeout(() => {
+          document.body.removeChild(overlay);
+        }, 300);
       }
     });
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        document.body.removeChild(overlay);
+        overlay.style.opacity = '0'; // Fade-out effect
+        setTimeout(() => {
+          document.body.removeChild(overlay);
+        }, 300);
       }
     });
   }
