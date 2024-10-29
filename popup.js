@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
     contentBox.style.maxHeight = '80%';
     contentBox.style.overflowY = 'auto';
     contentBox.style.boxShadow = '0px 4px 20px rgba(0, 0, 0, 0.2)';
-    contentBox.style.fontFamily = 'Arial, sans-serif';
+    contentBox.style.fontFamily = 'InterVariable';
     contentBox.style.fontSize = '14px';
     contentBox.style.lineHeight = '1.6';
     contentBox.style.color = '#333';
