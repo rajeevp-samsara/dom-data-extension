@@ -93,14 +93,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const contentBox = document.createElement('div');
     contentBox.style.backgroundColor = '#fff';
     contentBox.style.padding = '20px';
-    contentBox.style.borderRadius = '12px';
+    contentBox.style.borderRadius = '20px';
     contentBox.style.maxWidth = '600px';
     contentBox.style.width = '90%';
     contentBox.style.maxHeight = '80%';
     contentBox.style.overflowY = 'auto';
     contentBox.style.boxShadow = '0px 4px 20px rgba(0, 0, 0, 0.2)';
     contentBox.style.fontFamily = 'Arial, sans-serif';
-    contentBox.style.fontSize = '16px';
+    contentBox.style.fontSize = '14px';
     contentBox.style.lineHeight = '1.6';
     contentBox.style.color = '#333';
     contentBox.style.position = 'relative';
