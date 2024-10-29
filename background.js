@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 async function sendContentToChatGPT(content, prompt, sendResponse) {
-  const apiKey = 'YOUR_OPENAI_API_KEY';  // Replace with your actual OpenAI API key
+  const apiKey = 'sk-svcacct-ATVuLnKVVON-1JRA9W12HMbBXOPySZuz-6YTuPQnmPTt9j6G1ZH72LpB8IYsq_IYqCdT3BlbkFJn48UScxhz_id3iylnzGTwPVEeVwp-MMei4DP97caI0BKLjnBxxdZFf5Pojg3aP_YQAA';  // Replace with your actual OpenAI API key
   const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
   try {
