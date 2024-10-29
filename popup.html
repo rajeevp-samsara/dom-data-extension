@@ -4,19 +4,67 @@
   <title>ChatGPT Summary and Insights</title>
   <style>
     body {
-      width: 200px;
-      padding: 10px;
-      font-family: Arial, sans-serif;
+      width: 250px;
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+
+    h3 {
+      font-size: 18px;
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+
     button {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      background-color: #4CAF50; /* Green */
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      background-color: #388e3c;
+      transform: translateY(0px);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    /* Add a shadow around the popup to make it stand out */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.05);
+      z-index: -1;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
 <body>
-  <h3>ChatGPT Options</h3>
+  <h3>Proactive Insights</h3>
   <button id="summary-btn">Generate Summary</button>
   <button id="insights-btn">Generate Insights</button>
   <script src="popup.js"></script>

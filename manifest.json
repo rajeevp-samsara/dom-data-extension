@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "DOM Content Capture and ChatGPT",
+    "name": "Proactive Insights",
     "version": "1.0",
     "description": "Capture DOM content, send it to ChatGPT, and display the response.",
     "permissions": [
@@ -8,7 +8,12 @@
       "scripting"
     ],
     "action": {
-      "default_popup": "popup.html"
+      "default_popup": "popup.html",
+      "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
     },
     "background": {
       "service_worker": "background.js"
